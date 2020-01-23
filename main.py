@@ -36,7 +36,8 @@ while menuOption != '6':
     elif menuOption == '3':
         print('remove item by number')
         item = input("number of item: ")
-        del mylist[(int(item)-1)]
+        del mylist[(int(item)+1)]
+
     elif menuOption == '4':
         print('save list to file')
     elif menuOption == '5':
