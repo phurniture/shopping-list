@@ -18,8 +18,8 @@ menuText = '''
 1.) add item
 2.) print list
 3.) remove item by number
-4.) save list to file
-5.) load list form file
+4.) save list to "shoppinglist.txt"
+5.) load list from "shoppinglist.txt"
 6.) exit
 '''
 while 1:
@@ -49,15 +49,21 @@ while 1:
         elif menuOption == '3':
             print('\nremove item by number')
             item = input("number of item: ")
-            del mylist[(int(item)-1)]
+            if item.strip() == '':
+                print('item cannot be empty')
+            else:
+                del mylist[(int(item)-1)]
     #4 save to file
         elif menuOption == '4':
-            print('\nsave list to file')
-            print("operation not implemented yet")
-    #5 load file  
+            print('\nlist saved')
+            with open("shoppinglist.txt","a") as out:
+                out.write(str(mylist))
+            #5 load file  
         elif menuOption == '5':
-            print('\nload list form file')
-            print("operation not implemented yet")
+            print('\nlist loaded')
+            #print("operation not implemented yet")
+            with open('shoppinglist.txt', 'r') as file:
+                mylist = file.read()
     #6 exit
         elif menuOption == '6':
             print('exit')
